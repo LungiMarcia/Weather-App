@@ -71,18 +71,19 @@ main {
 }
 
 .weather-temperature {
-  font-size: 48px;
+  font-size: 80px;
   font-weight: bold;
-  margin-left: 10px;
+  line-height: 88px;
 }
 
 .weather-icon {
-  font-size: 30px;
+  height: 88px;
+  width: 88px;
 }
 
 .weather-unit {
-  margin-top: 8px;
-  font-size: 20px;
+  margin-top: 7px;
+  font-size: 28px;
 }
 
 footer {
