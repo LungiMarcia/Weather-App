@@ -6,13 +6,12 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#time");
-  let date = new Date(response.data.time + 1000);
+  let date = new Date(response.data.time * 1000);
   let iconElement = document.querySelector("#icon");
 
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon"/>`;
 
   cityElement.innerHTML = response.data.city;
-
   timeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
@@ -36,7 +35,7 @@ function formatDate(date) {
   ];
   let day = days[date.getDay()];
 
-  if (minutes < 0) {
+  if (minutes < 10) {
     minutes = `0${minutes}`;
   }
 
@@ -78,7 +77,7 @@ function displayForecast(response) {
               <div class="weather-forecast-date">${formatDay(day.time)}</div>
               <img src="${
                 day.condition.icon_url
-              }" class=""weather-forecast-icon"    "/>
+              }"class="weather-forecast-icon"/>
               
               <div class="weather-forecast-temp">
                 <span class="weather-forecast-max-temp"><strong>${Math.round(
@@ -98,3 +97,5 @@ function displayForecast(response) {
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", search);
+
+searchCity("Pretoria");
